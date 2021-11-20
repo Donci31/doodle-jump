@@ -1,16 +1,18 @@
 package view;
 
+import controller.GameLoop;
 import model.Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class GameView extends JPanel {
 
     private final Game source;
 
-    private ArrayList<DrawAble> drawList;
+    private final ArrayList<DrawAble> drawList;
 
     public GameView(Game source) {
         this.source = source;
@@ -24,6 +26,14 @@ public class GameView extends JPanel {
 
     public void addDrawable(DrawAble newElement) {
         drawList.add(newElement);
+    }
+
+    public void keyPressed(KeyEvent e) {
+        source.keyPressed(e);
+    }
+
+    public void keyReleased(KeyEvent e) {
+        source.keyReleased(e);
     }
 
     @Override

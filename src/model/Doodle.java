@@ -1,8 +1,13 @@
 package model;
 
+import java.awt.*;
+
 public class Doodle implements Fps {
     private int x;
     private int y;
+
+    private final int width = 125;
+    private final int height = 150;
 
     private int vx;
     private int vy;
@@ -12,6 +17,7 @@ public class Doodle implements Fps {
     public Doodle() {
         x = 100;
         y = 100;
+
         vx = 0;
         vy = 0;
     }
@@ -30,6 +36,18 @@ public class Doodle implements Fps {
 
     public int getVy() {
         return vy;
+    }
+
+    public void setVx(int vx) {
+        this.vx = vx;
+    }
+
+    public void setVy(int vy) {
+        this.vy = vy;
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(x, y, width, height);
     }
 
     public boolean isDead() {
