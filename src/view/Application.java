@@ -4,7 +4,6 @@ import controller.CollisionDetector;
 import model.Game;
 import model.Doodle;
 import controller.GameLoop;
-import model.Platform;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -43,35 +42,22 @@ public class Application extends JFrame {
         setTitle("Doodle jump");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
         setVisible(true);
     }
 
     public static void main(String[] args) {
         Doodle player = new Doodle();
 
-        Game game = new Game(player);
+        GameView gameView = new GameView();
 
-        GameView gameView = new GameView(game);
+        CollisionDetector collisionDetector = new CollisionDetector();
 
-        gameView.addDrawable(new DoodleView(player));
-
-        Platform p1 = new Platform(100, 500);
-
-        Platform p2 = new Platform(250, 300);
-
-        gameView.addDrawable(new PlatformView(p1));
-
-        gameView.addDrawable(new PlatformView(p2));
-
-        CollisionDetector collisionDetector = new CollisionDetector(player);
+        Game game = new Game(player, gameView, collisionDetector);
 
         GameLoop gameLoop = new GameLoop(player, gameView, game, collisionDetector);
 
         Application gameplay = new Application(gameView);
-
-        collisionDetector.addPlatform(p1);
-
-        collisionDetector.addPlatform(p2);
 
         while(gameLoop.isAlive()) {}
 

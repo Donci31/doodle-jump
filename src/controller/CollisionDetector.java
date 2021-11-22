@@ -8,16 +8,19 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class CollisionDetector {
-    private final Doodle doodle;
+    private Doodle doodle;
 
     private final ArrayList<Monster> monsters;
 
     private final ArrayList<Platform> platforms;
 
-    public CollisionDetector(Doodle doodle) {
-        this.doodle = doodle;
+    public CollisionDetector() {
         monsters = new ArrayList<>();
         platforms = new ArrayList<>();
+    }
+
+    public void setDoodle(Doodle doodle) {
+        this.doodle = doodle;
     }
 
     public void addPlatform(Platform p) {
@@ -33,6 +36,12 @@ public class CollisionDetector {
         for (Platform p : platforms) {
             if (intersects(doodle.getBounds(), p.getBounds()) && doodle.getVy() > 0) {
                 p.hitBy(doodle);
+                int delta = p.getY();
+
+                for (Platform plat : platforms) {
+                    plat.moveDown(650 - delta);
+                }
+                break;
             }
         }
     }

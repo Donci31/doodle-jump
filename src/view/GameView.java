@@ -10,18 +10,21 @@ import java.util.ArrayList;
 
 public class GameView extends JPanel {
 
-    private final Game source;
+    private Game source;
 
     private final ArrayList<DrawAble> drawList;
 
-    public GameView(Game source) {
-        this.source = source;
+    public GameView() {
 
         drawList = new ArrayList<>();
 
         setSize(500, 750);
 
         setVisible(true);
+    }
+
+    public void setGame(Game source) {
+        this.source = source;
     }
 
     public void addDrawable(DrawAble newElement) {

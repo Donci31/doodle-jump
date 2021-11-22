@@ -8,11 +8,10 @@ public class Doodle implements Fps {
 
     private final int width = 125;
     private final int height = 150;
+    private final int gravity = 1;
 
     private int vx;
     private int vy;
-
-    private final int gravity = 1;
 
     public Doodle() {
         x = 100;
@@ -47,7 +46,7 @@ public class Doodle implements Fps {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, width, height);
+        return new Rectangle(x, y + 100, width, height - 100);
     }
 
     public boolean isDead() {

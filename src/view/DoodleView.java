@@ -14,7 +14,7 @@ public class DoodleView implements DrawAble {
     public DoodleView(Doodle source) {
         this.source = source;
 
-        image = new ImageIcon(new ImageIcon("./resources/Doodle.png").getImage().getScaledInstance(125, 150, Image.SCALE_SMOOTH)).getImage();
+        image = new ImageIcon(new ImageIcon("./resources/doodle.png").getImage().getScaledInstance(125, 150, Image.SCALE_SMOOTH)).getImage();
     }
 
     @Override

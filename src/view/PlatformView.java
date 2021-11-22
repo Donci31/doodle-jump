@@ -15,6 +15,6 @@ public class PlatformView implements DrawAble {
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawRect(source.getX(), source.getY(), 150, 20);
+        g2d.drawRect(source.getX(), source.getY(), 100, 20);
     }
 }
