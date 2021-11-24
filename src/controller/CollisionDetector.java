@@ -19,6 +19,10 @@ public class CollisionDetector {
         platforms = new ArrayList<>();
     }
 
+    public ArrayList<Platform> getPlatforms() {
+        return platforms;
+    }
+
     public void setDoodle(Doodle doodle) {
         this.doodle = doodle;
     }
@@ -36,12 +40,6 @@ public class CollisionDetector {
         for (Platform p : platforms) {
             if (intersects(doodle.getBounds(), p.getBounds()) && doodle.getVy() > 0) {
                 p.hitBy(doodle);
-                int delta = p.getY();
-
-                for (Platform plat : platforms) {
-                    plat.moveDown(650 - delta);
-                }
-                break;
             }
         }
     }

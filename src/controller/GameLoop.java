@@ -3,18 +3,22 @@ package controller;
 import model.Doodle;
 import model.Game;
 import view.GameView;
+import view.MovingPlatformView;
 
 public class GameLoop extends Thread {
     private final Doodle doodle;
     private final GameView view;
     private final Game game;
     private final CollisionDetector collision;
+    private final PlatformHandler platformHandler;
 
     public GameLoop(Doodle doodle, GameView view, Game game, CollisionDetector collision) {
         this.doodle = doodle;
         this.view = view;
         this.game = game;
         this.collision = collision;
+
+        platformHandler = new PlatformHandler(collision, view.getDrawList(), game.getMovables());
 
         start();
     }
@@ -27,6 +31,7 @@ public class GameLoop extends Thread {
                 view.repaint(0, 0, 500, 750);
                 game.tick();
                 collision.doodlePlatformCollision();
+                platformHandler.checkPlatforms();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

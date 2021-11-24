@@ -15,7 +15,7 @@ public class Doodle implements Fps {
 
     public Doodle() {
         x = 100;
-        y = 100;
+        y = 0;
 
         vx = 0;
         vy = 0;

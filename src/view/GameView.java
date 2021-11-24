@@ -1,6 +1,5 @@
 package view;
 
-import controller.GameLoop;
 import model.Game;
 
 import javax.swing.*;
@@ -21,6 +20,10 @@ public class GameView extends JPanel {
         setSize(500, 750);
 
         setVisible(true);
+    }
+
+    public ArrayList<DrawAble> getDrawList() {
+        return drawList;
     }
 
     public void setGame(Game source) {
