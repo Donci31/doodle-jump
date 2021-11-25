@@ -20,6 +20,7 @@ public class Platform implements Fps {
     public Platform(int x, int y) {
         this.x = x;
         this.y = y;
+        powerUp = new DefaultPowerUp();
     }
 
     public int getX() {
@@ -47,7 +48,7 @@ public class Platform implements Fps {
     }
 
     public void hitBy(Doodle doodle) {
-        doodle.setVy(-22);
+        powerUp.hitBy(doodle);
     }
 
     @Override

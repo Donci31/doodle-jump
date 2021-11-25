@@ -1,17 +1,24 @@
 package model;
 
+import view.DoodleView;
+
 import java.awt.*;
 
 public class Doodle implements Fps {
     private int x;
     private int y;
 
-    private final int width = 125;
-    private final int height = 150;
-    private final int gravity = 1;
+    private double angle;
 
     private int vx;
     private int vy;
+
+    private final int width = 125;
+    private final int height = 150;
+
+    private DoodleState doodleState;
+
+    private DoodleView doodleView;
 
     public Doodle() {
         x = 100;
@@ -19,6 +26,8 @@ public class Doodle implements Fps {
 
         vx = 0;
         vy = 0;
+
+        doodleState = new TrampolineState(this);
     }
 
     public int getX() {
@@ -29,6 +38,14 @@ public class Doodle implements Fps {
         return y;
     }
 
+    public double getAngle() {
+        return angle;
+    }
+
+    public void setAngle(double angle) {
+        this.angle = angle;
+    }
+
     public int getVx() {
         return vx;
     }
@@ -37,12 +54,28 @@ public class Doodle implements Fps {
         return vy;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     public void setVx(int vx) {
         this.vx = vx;
     }
 
     public void setVy(int vy) {
         this.vy = vy;
+    }
+
+    public void setDoodleState(DoodleState doodleState) {
+        this.doodleState = doodleState;
+    }
+
+    public void setDoodleView(DoodleView doodleView) {
+        this.doodleView = doodleView;
     }
 
     public Rectangle getBounds() {
@@ -55,9 +88,6 @@ public class Doodle implements Fps {
 
     @Override
     public void tick() {
-        vy += gravity;
-
-        x += vx;
-        y += vy;
+        doodleState.updateState();
     }
 }

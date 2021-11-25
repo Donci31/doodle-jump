@@ -30,7 +30,12 @@ public class Game implements Fps {
         movables = new ArrayList<>();
 
         view.setGame(this);
-        view.addDrawable(new DoodleView(doodle));
+
+        DoodleView doodleView = new DoodleView(doodle);
+
+        view.addDrawable(doodleView);
+
+        doodle.setDoodleView(doodleView);
 
         detector.setDoodle(doodle);
 
