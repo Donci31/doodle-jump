@@ -77,6 +77,7 @@ public class CollisionDetector {
             for (Bullet bullet : bullets) {
                 if (intersects(bullet.getBounds(), monster.getBounds())) {
                     monster.die();
+                    bullet.hit();
                 }
             }
         }

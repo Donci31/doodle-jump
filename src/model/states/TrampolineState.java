@@ -9,13 +9,10 @@ public class TrampolineState implements DoodleState {
 
     private final Doodle doodle;
 
-    private final int gravity;
-
     public TrampolineState(Doodle doodle) {
         this.doodle = doodle;
         timer = 60;
-        doodle.setVy(-44);
-        gravity = 1;
+        doodle.setVy(-40);
     }
 
     @Override

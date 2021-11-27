@@ -1,4 +1,4 @@
-package view;
+package view.platformviews;
 
 import model.platforms.Platform;
 

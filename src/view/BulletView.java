@@ -16,5 +16,6 @@ public class BulletView implements DrawAble {
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawOval(source.getX(), source.getY(), source.getWidth(), source.getHeight());
+        g2d.fillOval(source.getX(), source.getY(), source.getWidth(), source.getHeight());
     }
 }

@@ -16,7 +16,6 @@ public class MonsterHandler {
         this.detector = detector;
         this.drawAbles = drawAbles;
         this.movables = movables;
-        newMonster(300, -900);
     }
 
     public void newMonster(int x, int y) {

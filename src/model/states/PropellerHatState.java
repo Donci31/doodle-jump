@@ -1,6 +1,7 @@
 package model.states;
 
 import model.Doodle;
+import model.Game;
 
 public class PropellerHatState implements DoodleState {
 
@@ -15,8 +16,10 @@ public class PropellerHatState implements DoodleState {
 
     @Override
     public void updateState() {
-        doodle.setVy(-1);
-        doodle.setY(doodle.getY() + doodle.getVy());
+        doodle.setVy(-10);
+
+        doodle.setX(doodle.getX() + doodle.getVx());
+        doodle.setY(doodle.getY() + doodle.getVy() + Game.getScrollDownSpeed());
 
         timer--;
 

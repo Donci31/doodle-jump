@@ -59,7 +59,7 @@ public class Application extends JFrame {
 
         Application gameplay = new Application(gameView);
 
-        while(gameLoop.isAlive()) {}
+        gameLoop.run();
 
         gameplay.dispose();
     }

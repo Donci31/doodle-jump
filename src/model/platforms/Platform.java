@@ -5,7 +5,8 @@ import model.Fps;
 import model.Game;
 import model.powerups.DefaultPowerUp;
 import model.powerups.PowerUp;
-import view.PlatformView;
+import view.platformviews.PlatformView;
+import view.powerupviews.PowerUpView;
 
 import java.awt.*;
 
@@ -55,12 +56,17 @@ public class Platform implements Fps {
         this.powerUp = powerUp;
     }
 
+    public void removePowerUp() {
+        powerUp = new DefaultPowerUp();
+        view.setPowerUpView(new PowerUpView());
+    }
+
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
     }
 
     public void hitBy(Doodle doodle) {
-        powerUp.hitBy(doodle);
+        powerUp.hitBy(this, doodle);
     }
 
     @Override

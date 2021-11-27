@@ -1,6 +1,7 @@
 package model.states;
 
 import model.Doodle;
+import model.Game;
 
 public class JetPackState implements DoodleState {
 
@@ -10,13 +11,15 @@ public class JetPackState implements DoodleState {
 
     public JetPackState(Doodle doodle) {
         this.doodle = doodle;
-        timer = 60;
+        timer = 120;
     }
 
     @Override
     public void updateState() {
-        doodle.setVy(-60);
-        doodle.setY(doodle.getY() + doodle.getVy());
+        doodle.setVy(-10);
+
+        doodle.setX(doodle.getX() + doodle.getVx());
+        doodle.setY(doodle.getY() + doodle.getVy() + Game.getScrollDownSpeed());
 
         timer--;
 

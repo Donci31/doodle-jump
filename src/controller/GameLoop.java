@@ -2,12 +2,19 @@ package controller;
 
 import model.Doodle;
 import model.Game;
+import model.platforms.Platform;
 import view.GameView;
 
-public class GameLoop extends Thread {
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+public class GameLoop {
     private final Doodle doodle;
     private final GameView view;
     private final Game game;
+
     private final CollisionDetector collision;
     private final PlatformHandler platformHandler;
     private final BulletHandler bulletHandler;
@@ -26,15 +33,12 @@ public class GameLoop extends Thread {
         monsterHandler = new MonsterHandler(collision, view.getDrawList(), game.getMovables());
 
         doodle.setBulletHandler(bulletHandler);
-
-        start();
     }
 
-    @Override
     public void run() {
         while (doodle.isAlive()) {
             try {
-                sleep(17);
+                Thread.sleep(17);
                 view.repaint(0, 0, 500, 750);
                 game.tick();
                 collision.checkCollisions();

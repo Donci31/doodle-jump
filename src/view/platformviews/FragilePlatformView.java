@@ -1,6 +1,7 @@
-package view;
+package view.platformviews;
 
 import model.platforms.Platform;
+import view.platformviews.PlatformView;
 
 import java.awt.*;
 

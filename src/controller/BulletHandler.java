@@ -34,7 +34,7 @@ public class BulletHandler {
 
         for (int i = 0; i < bullets.size(); i++) {
             Bullet b = bullets.get(i);
-            if (b.getY() > 700) {
+            if (b.getY() > 700 || b.hasHit()) {
                 bullets.remove(b);
                 drawAbles.remove(b.getView());
                 movables.remove(b);

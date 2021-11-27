@@ -16,12 +16,16 @@ public class Bullet implements Fps {
 
     private BulletView view;
 
+    boolean hit;
+
     public Bullet(int x, int y, int vx, int vy) {
         this.x = x;
         this.y = y;
 
         this.vx = vx;
         this.vy = vy;
+
+        hit = false;
     }
 
     public int getX() {
@@ -42,6 +46,14 @@ public class Bullet implements Fps {
 
     public BulletView getView() {
         return view;
+    }
+
+    public boolean hasHit() {
+        return hit;
+    }
+
+    public void hit() {
+        hit = true;
     }
 
     public void setView(BulletView view) {
