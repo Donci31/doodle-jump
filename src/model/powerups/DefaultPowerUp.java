@@ -1,8 +1,10 @@
-package model;
+package model.powerups;
+
+import model.Doodle;
 
 public class DefaultPowerUp implements PowerUp {
     @Override
     public void hitBy(Doodle doodle) {
-        doodle.setVy(-22);
+        doodle.setVy(-25);
     }
 }

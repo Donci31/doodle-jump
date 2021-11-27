@@ -1,4 +1,6 @@
-package model;
+package model.states;
+
+import model.Doodle;
 
 public class JetPackState implements DoodleState {
 
@@ -13,7 +15,8 @@ public class JetPackState implements DoodleState {
 
     @Override
     public void updateState() {
-        doodle.setVy(-1);
+        doodle.setVy(-60);
+        doodle.setY(doodle.getY() + doodle.getVy());
 
         timer--;
 

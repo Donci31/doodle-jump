@@ -1,8 +1,12 @@
 package model;
 
+import controller.BulletHandler;
+import model.states.DefaultState;
+import model.states.DoodleState;
 import view.DoodleView;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Doodle implements Fps {
     private int x;
@@ -18,16 +22,25 @@ public class Doodle implements Fps {
 
     private DoodleState doodleState;
 
-    private DoodleView doodleView;
+    private DoodleView view;
 
-    public Doodle() {
-        x = 100;
-        y = 0;
+    private BulletHandler bulletHandler;
+
+    boolean haveShot;
+
+    boolean isAlive;
+
+    public Doodle(int x, int y) {
+        this.x = x;
+        this.y = y;
 
         vx = 0;
         vy = 0;
 
-        doodleState = new TrampolineState(this);
+        haveShot = false;
+        isAlive = true;
+
+        doodleState = new DefaultState(this);
     }
 
     public int getX() {
@@ -42,10 +55,6 @@ public class Doodle implements Fps {
         return angle;
     }
 
-    public void setAngle(double angle) {
-        this.angle = angle;
-    }
-
     public int getVx() {
         return vx;
     }
@@ -54,12 +63,24 @@ public class Doodle implements Fps {
         return vy;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public void setX(int x) {
         this.x = x;
     }
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public void setAngle(double angle) {
+        this.angle = angle;
     }
 
     public void setVx(int vx) {
@@ -74,20 +95,65 @@ public class Doodle implements Fps {
         this.doodleState = doodleState;
     }
 
-    public void setDoodleView(DoodleView doodleView) {
-        this.doodleView = doodleView;
+    public void setDoodleView(DoodleView view) {
+        this.view = view;
+    }
+
+    public void setBulletHandler(BulletHandler bulletHandler) {
+        this.bulletHandler = bulletHandler;
     }
 
     public Rectangle getBounds() {
         return new Rectangle(x, y + 100, width, height - 100);
     }
 
-    public boolean isDead() {
-        return y >= 750;
+    public Rectangle getHitbox() {
+        return new Rectangle(x, y, width, height);
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void die() {
+        isAlive = false;
+    }
+
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_LEFT) {
+            setVx(-5);
+        }
+        if (key == KeyEvent.VK_RIGHT) {
+            setVx(5);
+        }
+        if (key == KeyEvent.VK_SPACE && !haveShot) {
+            haveShot = true;
+            view.shoot();
+            bulletHandler.newBullet(x + width / 2, y, vx, -33);
+        }
+    }
+
+    public void keyReleased(KeyEvent e) {
+        int key = e.getKeyCode();
+        if (key == KeyEvent.VK_LEFT) {
+            setVx(0);
+        }
+        if (key == KeyEvent.VK_RIGHT) {
+            setVx(0);
+        }
+        if (key == KeyEvent.VK_SPACE) {
+            haveShot = false;
+            view.unShoot();
+        }
     }
 
     @Override
     public void tick() {
+        if (y > 750) {
+            die();
+        }
+
         doodleState.updateState();
     }
 }

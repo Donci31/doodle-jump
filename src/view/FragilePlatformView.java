@@ -1,6 +1,6 @@
 package view;
 
-import model.Platform;
+import model.platforms.Platform;
 
 import java.awt.*;
 

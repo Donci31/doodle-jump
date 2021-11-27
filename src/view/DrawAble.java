@@ -3,5 +3,5 @@ package view;
 import java.awt.*;
 
 public interface DrawAble {
-    public void draw(Graphics g);
+    void draw(Graphics g);
 }

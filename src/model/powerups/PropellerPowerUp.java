@@ -1,4 +1,7 @@
-package model;
+package model.powerups;
+
+import model.Doodle;
+import model.states.PropellerHatState;
 
 public class PropellerPowerUp implements PowerUp {
     @Override

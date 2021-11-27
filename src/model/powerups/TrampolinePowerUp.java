@@ -1,4 +1,7 @@
-package model;
+package model.powerups;
+
+import model.Doodle;
+import model.states.TrampolineState;
 
 public class TrampolinePowerUp implements PowerUp {
     @Override

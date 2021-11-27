@@ -1,9 +1,10 @@
 package controller;
 
-import model.Fps;
-import model.FragilePlatform;
-import model.MovingPlatform;
-import model.Platform;
+import model.*;
+import model.platforms.FragilePlatform;
+import model.platforms.MovingPlatform;
+import model.platforms.Platform;
+import model.powerups.SpringPowerUp;
 import view.DrawAble;
 import view.FragilePlatformView;
 import view.MovingPlatformView;
@@ -25,7 +26,13 @@ public class PlatformHandler {
         this.movables = movables;
 
 
-        newPlatform(100, 650);
+        newPlatform(100, 600);
+
+        newPlatform(300, 300);
+
+        newPlatform(100, 0);
+
+        newPlatform(300, -300);
     }
 
     public void newPlatform(int x, int y) {
@@ -38,17 +45,15 @@ public class PlatformHandler {
             PlatformView pView = new PlatformView(p);
             drawAbles.add(pView);
             p.setView(pView);
-        } else if (outcome <= 0.9) {
+        } else {
             p = new MovingPlatform(x, y);
             MovingPlatformView pView = new MovingPlatformView(p);
             drawAbles.add(pView);
             p.setView(pView);
-        } else {
-            p = new FragilePlatform(x, y);
-            FragilePlatformView pView = new FragilePlatformView(p);
-            drawAbles.add(pView);
-            p.setView(pView);
         }
+
+        p.setPowerUp(new SpringPowerUp());
+
         detector.addPlatform(p);
         movables.add(p);
     }
@@ -58,7 +63,7 @@ public class PlatformHandler {
 
         for (int i = 0; i < platforms.size(); i++) {
             Platform plat = platforms.get(i);
-            if (plat.getY() > 750) {
+            if (plat.getY() > 700) {
                 platforms.remove(plat);
                 drawAbles.remove(plat.getView());
                 movables.remove(plat);

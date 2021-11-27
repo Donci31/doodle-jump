@@ -1,4 +1,6 @@
-package model;
+package model.states;
+
+import model.Doodle;
 
 public class PropellerHatState implements DoodleState {
 
@@ -14,6 +16,7 @@ public class PropellerHatState implements DoodleState {
     @Override
     public void updateState() {
         doodle.setVy(-1);
+        doodle.setY(doodle.getY() + doodle.getVy());
 
         timer--;
 

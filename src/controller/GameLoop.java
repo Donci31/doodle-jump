@@ -3,7 +3,6 @@ package controller;
 import model.Doodle;
 import model.Game;
 import view.GameView;
-import view.MovingPlatformView;
 
 public class GameLoop extends Thread {
     private final Doodle doodle;
@@ -11,6 +10,8 @@ public class GameLoop extends Thread {
     private final Game game;
     private final CollisionDetector collision;
     private final PlatformHandler platformHandler;
+    private final BulletHandler bulletHandler;
+    private final MonsterHandler monsterHandler;
 
     public GameLoop(Doodle doodle, GameView view, Game game, CollisionDetector collision) {
         this.doodle = doodle;
@@ -20,18 +21,26 @@ public class GameLoop extends Thread {
 
         platformHandler = new PlatformHandler(collision, view.getDrawList(), game.getMovables());
 
+        bulletHandler = new BulletHandler(collision, view.getDrawList(), game.getMovables());
+
+        monsterHandler = new MonsterHandler(collision, view.getDrawList(), game.getMovables());
+
+        doodle.setBulletHandler(bulletHandler);
+
         start();
     }
 
     @Override
     public void run() {
-        while (!doodle.isDead()) {
+        while (doodle.isAlive()) {
             try {
                 sleep(17);
                 view.repaint(0, 0, 500, 750);
                 game.tick();
-                collision.doodlePlatformCollision();
+                collision.checkCollisions();
                 platformHandler.checkPlatforms();
+                bulletHandler.checkBullets();
+                monsterHandler.checkMonsters();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

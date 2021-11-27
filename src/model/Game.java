@@ -5,11 +5,14 @@ import view.*;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Game implements Fps {
     private final int height = 750;
     private final int width = 500;
+
+    private static int scrollDownSpeed;
+
+    private static final int gravity = 1;
 
     private final Doodle doodle;
 
@@ -46,32 +49,32 @@ public class Game implements Fps {
         return movables;
     }
 
+    public static int getGravity() {
+        return gravity;
+    }
+
+    public static int getScrollDownSpeed() {
+        return scrollDownSpeed;
+    }
+
+    public static void setScrollDownSpeed(int scrollDownSpeed) {
+        Game.scrollDownSpeed = scrollDownSpeed;
+    }
+
     public void keyPressed(KeyEvent e) {
-        int key = e.getKeyCode();
-        if (key == KeyEvent.VK_LEFT) {
-            doodle.setVx(-5);
-        }
-        if (key == KeyEvent.VK_RIGHT) {
-            doodle.setVx(5);
-        }
+        doodle.keyPressed(e);
     }
 
     public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
-        if (key == KeyEvent.VK_LEFT) {
-            doodle.setVx(0);
-        }
-        if (key == KeyEvent.VK_RIGHT) {
-            doodle.setVx(0);
-        }
+        doodle.keyReleased(e);
     }
 
     @Override
     public void tick() {
         if (doodle.getY() < 200 && doodle.getVy() < 0) {
-            Platform.setySpeed(-doodle.getVy());
+            Game.setScrollDownSpeed(-doodle.getVy());
         } else {
-            Platform.setySpeed(0);
+            Game.setScrollDownSpeed(0);
         }
 
         for (Fps f : movables) {

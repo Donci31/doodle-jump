@@ -1,18 +1,20 @@
 package view;
 
-import model.Platform;
+import model.platforms.Platform;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class MovingPlatformView extends PlatformView {
     public MovingPlatformView(Platform platform) {
         super(platform);
+
+        image = new ImageIcon(new ImageIcon("./resources/MovingPlatform.png").getImage().getScaledInstance(source.getWidth(), source.getHeight(), Image.SCALE_SMOOTH)).getImage();
     }
 
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawRect(source.getX(), source.getY(), 100, 20);
-        g2d.drawRect(source.getX(), source.getY(), 50, 20);
+        g2d.drawImage(image, source.getX(), source.getY(), null);
     }
 }

@@ -1,5 +1,10 @@
-package model;
+package model.platforms;
 
+import model.Doodle;
+import model.Fps;
+import model.Game;
+import model.powerups.DefaultPowerUp;
+import model.powerups.PowerUp;
 import view.PlatformView;
 
 import java.awt.*;
@@ -11,7 +16,6 @@ public class Platform implements Fps {
     protected final int width = 100;
     protected final int height = 20;
 
-    protected static int ySpeed;
 
     protected PlatformView view;
 
@@ -31,6 +35,14 @@ public class Platform implements Fps {
         return y;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public PlatformView getView() {
         return view;
     }
@@ -39,8 +51,8 @@ public class Platform implements Fps {
         this.view = view;
     }
 
-    public static void setySpeed(int ySpeed) {
-        Platform.ySpeed = ySpeed;
+    public void setPowerUp(PowerUp powerUp) {
+        this.powerUp = powerUp;
     }
 
     public Rectangle getBounds() {
@@ -53,6 +65,6 @@ public class Platform implements Fps {
 
     @Override
     public void tick() {
-        y += ySpeed;
+        y += Game.getScrollDownSpeed();
     }
 }

@@ -1,4 +1,4 @@
-package model;
+package model.states;
 
 public interface DoodleState {
     void updateState();

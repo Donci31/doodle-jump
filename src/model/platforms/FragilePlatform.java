@@ -1,4 +1,6 @@
-package model;
+package model.platforms;
+
+import model.Doodle;
 
 public class FragilePlatform extends Platform {
 
