@@ -65,7 +65,6 @@ public class Monster implements Fps {
         isAlive = false;
     }
 
-
     /**
      * Frissíti a szörny állapotát
      */
