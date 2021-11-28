@@ -47,7 +47,7 @@ public class Application extends JFrame {
     }
 
     public static void main(String[] args) {
-        Doodle player = new Doodle(100, 100);
+        Doodle player = new Doodle(300, 100);
 
         GameView gameView = new GameView();
 

@@ -3,6 +3,9 @@ package model.states;
 import model.Doodle;
 import model.Game;
 
+/**
+ * Doodle trambulinos állapota
+ */
 public class TrampolineState implements DoodleState {
 
     private int timer;
@@ -12,9 +15,14 @@ public class TrampolineState implements DoodleState {
     public TrampolineState(Doodle doodle) {
         this.doodle = doodle;
         timer = 60;
-        doodle.setVy(-40);
+        doodle.setVy(-35);
     }
 
+    /**
+     * Ad egy nagyobb löketet a doodlenek
+     * 1 másodperc letelte után visszaállítja
+     * a doodle állapotát normálisra
+     */
     @Override
     public void updateState() {
 

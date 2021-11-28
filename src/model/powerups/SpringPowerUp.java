@@ -6,6 +6,6 @@ import model.platforms.Platform;
 public class SpringPowerUp implements PowerUp {
     @Override
     public void hitBy(Platform platform, Doodle doodle) {
-        doodle.setVy(-40);
+        doodle.setVy(-35);
     }
 }

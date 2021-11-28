@@ -6,9 +6,10 @@ import view.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+/**
+ * Játék logikáját kezelő osztály
+ */
 public class Game implements Fps {
-    private final int height = 750;
-    private final int width = 500;
 
     private static int scrollDownSpeed;
 
@@ -16,20 +17,10 @@ public class Game implements Fps {
 
     private final Doodle doodle;
 
-    private final GameView view;
-
-    private final CollisionDetector detector;
-
-    private final ArrayList<Monster> monsters;
-
     private final ArrayList<Fps> movables;
 
     public Game(Doodle doodle, GameView view, CollisionDetector detector) {
         this.doodle = doodle;
-        this.view = view;
-        this.detector = detector;
-
-        monsters = new ArrayList<>();
         movables = new ArrayList<>();
 
         view.setGame(this);
@@ -69,6 +60,10 @@ public class Game implements Fps {
         doodle.keyReleased(e);
     }
 
+    /**
+     * Ha a doodle egy bizonyos pont felé megy lejjebb görgeti a képernyőt.
+     * Frissíti a játékon belüli összes mozgó dolog helyzetét.
+     */
     @Override
     public void tick() {
         if (doodle.getY() < 200 && doodle.getVy() < 0) {

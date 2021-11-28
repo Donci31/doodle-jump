@@ -21,6 +21,9 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Platformok fileból való beolvasása, karbantartása
+ */
 public class PlatformHandler {
 
     private final CollisionDetector detector;
@@ -50,24 +53,29 @@ public class PlatformHandler {
         chooser.put("trampoline", this::addTrampoline);
         chooser.put("spring", this::Spring);
 
-        String content = "";
-
-        try {
-            content = Files.readString(Path.of("platforms.json"), StandardCharsets.US_ASCII);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Gson gson = new Gson();
-
-        PlatformData[] data = gson.fromJson(content, PlatformData[].class);
+        PlatformData[] data = platformLoader();
 
         for(PlatformData plat : data) {
             newPlatform(plat.type, plat.powerUp, plat.x, plat.y);
         }
+
+        for(PlatformData plat : data) {
+            newPlatform(plat.type, plat.powerUp, plat.x, plat.y - 2800);
+        }
+
+        for(PlatformData plat : data) {
+            newPlatform(plat.type, plat.powerUp, plat.x, plat.y - 4500);
+        }
     }
 
-    public void newPlatform(String type, String powerUp, int x, int y) {
+    /**
+     * Új platformot rak a játékba
+     * @param type Platform típusa szövegként
+     * @param powerUp Powerup típusa szövegként
+     * @param x Platform x koordinátája
+     * @param y Platform y koordinátája
+     */
+    private void newPlatform(String type, String powerUp, int x, int y) {
         platChooser.get(type).add(powerUp, x, y);
     }
 
@@ -141,6 +149,28 @@ public class PlatformHandler {
         p.setView(pView);
     }
 
+    /**
+     * Segédfüggvény a filebeolvasásra
+     * @return platform adatokat tartalmazó tömb
+     */
+    private PlatformData[] platformLoader() {
+        String content = null;
+
+        try {
+            content = Files.readString(Path.of("platforms.json"), StandardCharsets.US_ASCII);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Gson gson = new Gson();
+
+        return gson.fromJson(content, PlatformData[].class);
+    }
+
+    /**
+     * Ha egy paltform kikerül a képernyőről akkor kitörli.
+     * Kevés platform esetén újakat olvas be fileból.
+     */
     public void checkPlatforms() {
         ArrayList<Platform> platforms = detector.getPlatforms();
 
@@ -150,6 +180,17 @@ public class PlatformHandler {
                 platforms.remove(plat);
                 drawAbles.remove(plat.getView());
                 movables.remove(plat);
+            }
+        }
+
+        if (platforms.size() <= 20) {
+            System.out.println("load");
+            PlatformData[] data = platformLoader();
+            int relativeY = platforms.get(platforms.size() - 1).getY() - 1100;
+
+            for (PlatformData plat : data) {
+                plat.y += relativeY;
+                newPlatform(plat.type, plat.powerUp, plat.x, plat.y);
             }
         }
     }

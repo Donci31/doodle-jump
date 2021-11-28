@@ -6,6 +6,9 @@ import view.*;
 
 import java.util.ArrayList;
 
+/**
+ * Lövedékek kezelése
+ */
 public class BulletHandler {
     CollisionDetector detector;
     ArrayList<DrawAble> drawAbles;
@@ -17,6 +20,13 @@ public class BulletHandler {
         this.movables = movables;
     }
 
+    /**
+     * Új lövedéket rak a játékba
+     * @param x Lövedék x koordinátája
+     * @param y Lövedék y koordinátája
+     * @param vx Lövedék x komponensű sebessége
+     * @param vy Lövedék y komponensű sebessége
+     */
     public void newBullet(int x, int y, int vx, int vy) {
         Bullet b;
 
@@ -29,6 +39,10 @@ public class BulletHandler {
         movables.add(b);
     }
 
+    /**
+     * Ha egy lövedék kiesik a pályáról vagy eltalál valakit,
+     * kiveszi a játékból
+     */
     public void checkBullets() {
         ArrayList<Bullet> bullets = detector.getBullets();
 

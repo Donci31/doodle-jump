@@ -2,6 +2,9 @@ package model.platforms;
 
 import model.Fps;
 
+/**
+ * Mozgó platform logikáját kezelő osztály
+ */
 public class MovingPlatform extends Platform implements Fps {
 
     private int vx;
@@ -11,6 +14,11 @@ public class MovingPlatform extends Platform implements Fps {
         vx = 2;
     }
 
+    /**
+     * Lejjebb görgeti a platformot, ha kell.
+     * Oldal irányba mozog, amíg el nem éri a képernyő szélét,
+     * és ott irányt változtat.
+     */
     @Override
     public void tick() {
         super.tick();

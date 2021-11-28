@@ -1,8 +1,9 @@
 package controller;
 
-import java.io.Serializable;
-
-public class PlatformData implements Serializable {
+/**
+ * Platformokról tartalmaz információt
+ */
+public class PlatformData {
     public String type;
     public String powerUp;
     public int x;

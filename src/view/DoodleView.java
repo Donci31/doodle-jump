@@ -11,8 +11,8 @@ public class DoodleView implements DrawAble {
 
     private Image currentImage;
 
-    Image normalImage;
-    Image shootImage;
+    private Image normalImage;
+    private Image shootImage;
 
     public DoodleView(Doodle source) {
         this.source = source;

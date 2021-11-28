@@ -8,6 +8,9 @@ import model.platforms.Platform;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Játékban található ütközéseket kezeli
+ */
 public class CollisionDetector {
     private Doodle doodle;
 
@@ -51,11 +54,20 @@ public class CollisionDetector {
         monsters.add(m);
     }
 
+    /**
+     * Megnézi hogy két dolog hitboxa ütközik-e
+     * @param a Egyik dolog hitboxa téglalapként
+     * @param b Másik dolog hitboxa téglalapként
+     * @return igaz ha metszik egymást
+     */
     private boolean intersects(Rectangle a, Rectangle b) {
         return a.x < b.x + b.width && a.x + a.width > b.x &&
                 a.y < b.y + b.height && a.y + a.height > b.y;
     }
 
+    /**
+     * Kezeli a Doodle platform ütközéseket
+     */
     private void doodlePlatformCollision() {
         for (Platform p : platforms) {
             if (intersects(doodle.getBounds(), p.getBounds()) && doodle.getVy() > 0) {
@@ -64,6 +76,9 @@ public class CollisionDetector {
         }
     }
 
+    /**
+     * Kezeli a Doodle szörny ütközéseket
+     */
     private void doodleMonsterCollision() {
         for (Monster m : monsters) {
             if (intersects(doodle.getHitbox(), m.getBounds())) {
@@ -72,6 +87,9 @@ public class CollisionDetector {
         }
     }
 
+    /**
+     * Kezeli a lövedék szörny ütközéseket
+     */
     private void bulletMonsterCollision() {
         for (Monster monster : monsters) {
             for (Bullet bullet : bullets) {
@@ -83,6 +101,9 @@ public class CollisionDetector {
         }
     }
 
+    /**
+     * Előző privát függvények segítségével kezel minden ütközést
+     */
     public void checkCollisions() {
         doodlePlatformCollision();
         doodleMonsterCollision();

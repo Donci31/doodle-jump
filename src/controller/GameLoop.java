@@ -2,14 +2,12 @@ package controller;
 
 import model.Doodle;
 import model.Game;
-import model.platforms.Platform;
 import view.GameView;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-
+/**
+ * 60 Fps-el működteti a játkban szereplő kontrollereket,
+ * meg a mozogni képes dolgokat
+ */
 public class GameLoop {
     private final Doodle doodle;
     private final GameView view;
@@ -35,6 +33,9 @@ public class GameLoop {
         doodle.setBulletHandler(bulletHandler);
     }
 
+    /**
+     * Ha a Doodle életben van, akkor egy eseményhurokban frissíti a képernyőt
+     */
     public void run() {
         while (doodle.isAlive()) {
             try {

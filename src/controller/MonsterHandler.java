@@ -7,6 +7,9 @@ import view.MonsterView;
 
 import java.util.ArrayList;
 
+/**
+ * Szörnyeket kezeli
+ */
 public class MonsterHandler {
     CollisionDetector detector;
     ArrayList<DrawAble> drawAbles;
@@ -18,6 +21,11 @@ public class MonsterHandler {
         this.movables = movables;
     }
 
+    /**
+     * Új szörnyet helyet a játékba
+     * @param x Szörny x koordinátája
+     * @param y Szörny y koordinátája
+     */
     public void newMonster(int x, int y) {
         Monster m;
 
@@ -30,6 +38,10 @@ public class MonsterHandler {
         movables.add(m);
     }
 
+    /**
+     * Ha egy szörny kikerül a képernyőről,
+     * vagy ha egy lövedék eltalálja törli a játékból
+     */
     public void checkMonsters() {
         ArrayList<Monster> monsters = detector.getMonsters();
 

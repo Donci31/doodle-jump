@@ -1,8 +1,11 @@
-[{"type":"default","powerUp":"spring","x":100,"y":400},
+[{"type":"default","powerUp":"propeller","x":300,"y":700},
+  {"type":"default","powerUp":"spring","x":100,"y":400},
   {"type":"default","powerUp":"default","x":300,"y":100},
   {"type":"moving","powerUp":"default","x":100,"y":-200},
   {"type":"moving","powerUp":"default","x":300,"y":-500},
   {"type":"default","powerUp":"jetpack","x":100,"y":-800},
   {"type":"fragile","powerUp":"default","x":300,"y":-800},
-  {"type":"default","powerUp":"default","x":300,"y":-1100}
+  {"type":"default","powerUp":"default","x":100,"y":-1100},
+  {"type":"default","powerUp":"default","x":300,"y":-1400},
+  {"type":"default","powerUp":"trampoline","x":100,"y":-1700}
 ]

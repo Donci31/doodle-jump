@@ -4,6 +4,9 @@ import view.MonsterView;
 
 import java.awt.*;
 
+/**
+ * Szörny logikáját kezelő osztály
+ */
 public class Monster implements Fps {
     private int x;
     private int y;
@@ -62,6 +65,10 @@ public class Monster implements Fps {
         isAlive = false;
     }
 
+
+    /**
+     * Frissíti a szörny állapotát
+     */
     @Override
     public void tick() {
         y += Game.getScrollDownSpeed();

@@ -4,11 +4,14 @@ import view.BulletView;
 
 import java.awt.*;
 
+/**
+ * Lövedék logikáját kezelő osztály
+ */
 public class Bullet implements Fps {
     private int x;
     private int y;
 
-    private int vx;
+    private final int vx;
     private int vy;
 
     private final int width = 20;
@@ -64,6 +67,11 @@ public class Bullet implements Fps {
         return new Rectangle(x, y, width, height);
     }
 
+    /**
+     * Minden frameben meghívódó függvény,
+     * ami változtatja helyzetét, sebességét.
+     * Figyelembe kell venni a játék görgetését is.
+     */
     @Override
     public void tick() {
         vy += Game.getGravity();

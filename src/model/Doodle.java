@@ -8,6 +8,10 @@ import view.DoodleView;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+
+/**
+ * Doodle logikáját kezelő osztály
+ */
 public class Doodle implements Fps {
     private int x;
     private int y;
@@ -148,6 +152,10 @@ public class Doodle implements Fps {
         }
     }
 
+    /**
+     * Ha kikerül a pályáról akkor meghal a doodle.
+     * Egyébként a Doodle státuszától frissíti az állapotát
+     */
     @Override
     public void tick() {
         if (y > 750) {

@@ -3,6 +3,9 @@ package model.states;
 import model.Doodle;
 import model.Game;
 
+/**
+ * Doodle jetpackes állapota
+ */
 public class JetPackState implements DoodleState {
 
     private int timer;
@@ -14,6 +17,11 @@ public class JetPackState implements DoodleState {
         timer = 120;
     }
 
+    /**
+     * Állandó sebességgel viszi felfele a doodlet
+     * 2 másodperc letelte után visszaállítja
+     * a doodle állapotát normálisra
+     */
     @Override
     public void updateState() {
         doodle.setVy(-10);

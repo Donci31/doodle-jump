@@ -4,6 +4,9 @@ import model.Doodle;
 import model.Game;
 import model.states.DoodleState;
 
+/**
+ * Doodle normál állapota
+ */
 public class DefaultState implements DoodleState {
 
     private final Doodle doodle;
@@ -12,6 +15,10 @@ public class DefaultState implements DoodleState {
         this.doodle = doodle;
     }
 
+    /**
+     * Változtatja a doodle sebességét a gravitáció függvényében
+     * Változtatja az irányát a sebesség és a lejjebb görgetés szerint
+     */
     @Override
     public void updateState() {
         doodle.setVy(doodle.getVy() + Game.getGravity());

@@ -7,6 +7,9 @@ import view.powerupviews.PowerUpView;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Sima platform képe
+ */
 public class PlatformView implements DrawAble {
 
     protected Platform source;
@@ -25,6 +28,10 @@ public class PlatformView implements DrawAble {
         this.powerUpView = powerUpView;
     }
 
+    /**
+     * Kirajzolja a platformot
+     * @param g Grapics osztály
+     */
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;

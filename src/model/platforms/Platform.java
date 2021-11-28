@@ -10,13 +10,15 @@ import view.powerupviews.PowerUpView;
 
 import java.awt.*;
 
+/**
+ * Platform logikáját kezelő osztály
+ */
 public class Platform implements Fps {
     protected int x;
     protected int y;
 
     protected final int width = 100;
     protected final int height = 20;
-
 
     protected PlatformView view;
 
@@ -65,10 +67,18 @@ public class Platform implements Fps {
         return new Rectangle(x, y, width, height);
     }
 
+    /**
+     * Ha a doodle-el ütközik, akkor a poweruptól függően
+     * valamilyen hatást tesz a doodle-re.
+     * @param doodle Platformmal ütköző doodle
+     */
     public void hitBy(Doodle doodle) {
         powerUp.hitBy(this, doodle);
     }
 
+    /**
+     * Lejjebb görgeti a platformot, ha kell.
+     */
     @Override
     public void tick() {
         y += Game.getScrollDownSpeed();

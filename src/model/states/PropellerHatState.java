@@ -3,6 +3,9 @@ package model.states;
 import model.Doodle;
 import model.Game;
 
+/**
+ * Doodle propelleres állapota
+ */
 public class PropellerHatState implements DoodleState {
 
     private int timer;
@@ -14,6 +17,11 @@ public class PropellerHatState implements DoodleState {
         timer = 60;
     }
 
+    /**
+     * Állandó sebességgel viszi felfele a doodlet
+     * 1 másodperc letelte után visszaállítja
+     * a doodle állapotát normálisra
+     */
     @Override
     public void updateState() {
         doodle.setVy(-10);
