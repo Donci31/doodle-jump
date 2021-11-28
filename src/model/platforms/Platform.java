@@ -58,11 +58,18 @@ public class Platform implements Fps {
         this.powerUp = powerUp;
     }
 
+    /**
+     * Elveszi a platform powerup-ját
+     */
     public void removePowerUp() {
         powerUp = new DefaultPowerUp();
         view.setPowerUpView(new PowerUpView());
     }
 
+    /**
+     * Visszaadja a platform hitboxát
+     * @return Hitbox méretű és pozíciójú téglalap
+     */
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
     }

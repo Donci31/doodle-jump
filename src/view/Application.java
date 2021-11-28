@@ -45,22 +45,4 @@ public class Application extends JFrame {
         setResizable(false);
         setVisible(true);
     }
-
-    public static void main(String[] args) {
-        Doodle player = new Doodle(300, 100);
-
-        GameView gameView = new GameView();
-
-        CollisionDetector collisionDetector = new CollisionDetector();
-
-        Game game = new Game(player, gameView, collisionDetector);
-
-        GameLoop gameLoop = new GameLoop(player, gameView, game, collisionDetector);
-
-        Application gameplay = new Application(gameView);
-
-        gameLoop.run();
-
-        gameplay.dispose();
-    }
 }

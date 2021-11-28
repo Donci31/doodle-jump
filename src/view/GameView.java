@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+/**
+ * Pálya kinézete
+ */
 public class GameView extends JPanel {
 
     private Game source;
@@ -42,6 +45,10 @@ public class GameView extends JPanel {
         source.keyReleased(e);
     }
 
+    /**
+     * Összes rajzolható osztályt kirajzol
+     * @param g Graphics osztály
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

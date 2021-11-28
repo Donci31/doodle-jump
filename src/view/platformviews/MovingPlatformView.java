@@ -12,7 +12,7 @@ public class MovingPlatformView extends PlatformView {
     public MovingPlatformView(Platform platform) {
         super(platform);
 
-        image = new ImageIcon(new ImageIcon("./resources/MovingPlatform.png").getImage().getScaledInstance(source.getWidth(), source.getHeight(), Image.SCALE_SMOOTH)).getImage();
+        image = new ImageIcon(new ImageIcon("./resources/MovingPlatform.png").getImage().getScaledInstance(source.getWidth(), source.getHeight(), Image.SCALE_FAST)).getImage();
     }
 
     /**
@@ -21,7 +21,9 @@ public class MovingPlatformView extends PlatformView {
      */
     @Override
     public void draw(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image, source.getX(), source.getY(), null);
+        if (source.getY() > 0) {
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.drawImage(image, source.getX(), source.getY(), null);
+        }
     }
 }

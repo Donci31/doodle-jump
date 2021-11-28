@@ -157,7 +157,7 @@ public class PlatformHandler {
         String content = null;
 
         try {
-            content = Files.readString(Path.of("platforms.json"), StandardCharsets.US_ASCII);
+            content = Files.readString(Path.of("./platforms/platforms.json"), StandardCharsets.US_ASCII);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -184,7 +184,6 @@ public class PlatformHandler {
         }
 
         if (platforms.size() <= 20) {
-            System.out.println("load");
             PlatformData[] data = platformLoader();
             int relativeY = platforms.get(platforms.size() - 1).getY() - 1100;
 

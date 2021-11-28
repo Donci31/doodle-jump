@@ -18,9 +18,11 @@ public class FragilePlatformView extends PlatformView {
      */
     @Override
     public void draw(Graphics g) {
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.drawRect(source.getX(), source.getY(), source.getWidth(), source.getHeight());
-        g2d.setColor(Color.black);
-        g2d.fillRect(source.getX(), source.getY(), source.getWidth(), source.getHeight());
+        if (source.getY() > 0) {
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.drawRect(source.getX(), source.getY(), source.getWidth(), source.getHeight());
+            g2d.setColor(Color.black);
+            g2d.fillRect(source.getX(), source.getY(), source.getWidth(), source.getHeight());
+        }
     }
 }

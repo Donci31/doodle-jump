@@ -4,6 +4,9 @@ import model.Bullet;
 
 import java.awt.*;
 
+/**
+ * Lövedék kinézete
+ */
 public class BulletView implements DrawAble {
 
     private Bullet source;
@@ -12,6 +15,10 @@ public class BulletView implements DrawAble {
         this.source = source;
     }
 
+    /**
+     * Kirajzolja a lövedéket
+     * @param g Graphics osztály
+     */
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;

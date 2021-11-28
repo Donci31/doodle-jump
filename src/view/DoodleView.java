@@ -5,6 +5,9 @@ import model.Doodle;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Doodle kinézete
+ */
 public class DoodleView implements DrawAble {
 
     private Doodle source;
@@ -22,14 +25,24 @@ public class DoodleView implements DrawAble {
         currentImage = normalImage;
     }
 
+    /**
+     * Vált a doodle lövő kinézetére
+     */
     public void shoot() {
         currentImage = shootImage;
     }
 
+    /**
+     * Vált a doodle eredeti kinézetére
+     */
     public void unShoot() {
         currentImage = normalImage;
     }
 
+    /**
+     * Kirajzolja a doodlet
+     * @param g Graphics osztály
+     */
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
