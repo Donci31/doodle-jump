@@ -11,13 +11,13 @@ import java.util.ArrayList;
  */
 public class Game implements Fps {
 
-    private static int scrollDownSpeed;
+    private static int scrollDownSpeed; // görgetési sebesség
 
-    private static final int gravity = 1;
+    private static final int gravity = 1; // gravitáció
 
-    private final Doodle doodle;
+    private final Doodle doodle; // Játékos által irányított doodle
 
-    private final ArrayList<Fps> movables;
+    private final ArrayList<Fps> movables; // Minden mozgó objektum
 
     public Game(Doodle doodle, GameView view, CollisionDetector detector) {
         this.doodle = doodle;
@@ -61,7 +61,7 @@ public class Game implements Fps {
     }
 
     /**
-     * Ha a doodle egy bizonyos pont felé megy lejjebb görgeti a képernyőt.
+     * Ha a doodle egy bizonyos pont felé megy, lejjebb görgeti a képernyőt.
      * Frissíti a játékon belüli összes mozgó dolog helyzetét.
      */
     @Override

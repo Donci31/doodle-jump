@@ -5,5 +5,9 @@ package program.model.states;
  * strategy minta segítségével
  */
 public interface DoodleState {
+
+    /**
+     * Megváltoztatja a doodle állapotát
+     */
     void updateState();
 }

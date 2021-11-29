@@ -8,18 +8,18 @@ import java.awt.*;
  * Lövedék logikáját kezelő osztály
  */
 public class Bullet implements Fps {
-    private int x;
-    private int y;
+    private int x; // lövedék x koordinátája
+    private int y; // lövedék y koordinátája
 
-    private final int vx;
-    private int vy;
+    private final int vx; // lövedék x komponensű sebessége
+    private int vy; // lövedék y komponensű sebessége
 
     private final int width = 20;
     private final int height = 20;
 
     private BulletView view;
 
-    boolean hit;
+    boolean hit; // eltalált-e valakit a lövedék
 
     public Bullet(int x, int y, int vx, int vy) {
         this.x = x;
@@ -63,6 +63,10 @@ public class Bullet implements Fps {
         this.view = view;
     }
 
+    /**
+     * Visszaadja a lövedék hitboxát
+     * @return hitbox
+     */
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
     }

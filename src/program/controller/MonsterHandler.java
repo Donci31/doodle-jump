@@ -53,5 +53,8 @@ public class MonsterHandler {
                 movables.remove(m);
             }
         }
+        if (monsters.size() < 1) {
+            newMonster(100, - 800);
+        }
     }
 }

@@ -7,7 +7,7 @@ import program.model.Fps;
  */
 public class MovingPlatform extends Platform implements Fps {
 
-    private int vx;
+    private int vx; // Platform x irányú sebessége
 
     public MovingPlatform(int x, int y) {
         super(x, y);

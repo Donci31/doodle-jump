@@ -8,17 +8,17 @@ import java.awt.*;
  * Szörny logikáját kezelő osztály
  */
 public class Monster implements Fps {
-    private int x;
-    private int y;
+    private int x; // szörny x koordinátája
+    private int y; // szörny y koordinátája
 
-    private int vx;
+    private int vx; // szörny x komponensű sebessége
 
     private final int width = 135;
     private final int height = 75;
 
     private MonsterView view;
 
-    private boolean isAlive;
+    private boolean isAlive; // életben van-e a szörny
 
     public Monster(int x, int y) {
         this.x = x;
@@ -53,6 +53,10 @@ public class Monster implements Fps {
         this.view = view;
     }
 
+    /**
+     * Visszaadja a szörny hitboxát
+     * @return hitbox
+     */
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
     }

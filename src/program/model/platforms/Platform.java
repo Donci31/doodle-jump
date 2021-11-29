@@ -14,15 +14,15 @@ import java.awt.*;
  * Platform logikáját kezelő osztály
  */
 public class Platform implements Fps {
-    protected int x;
-    protected int y;
+    protected int x; // platform x koordinátája
+    protected int y; // platform y koordinátája
 
     protected final int width = 100;
     protected final int height = 20;
 
     protected PlatformView view;
 
-    protected PowerUp powerUp;
+    protected PowerUp powerUp; // Platform erősítése
 
     public Platform(int x, int y) {
         this.x = x;

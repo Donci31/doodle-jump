@@ -8,9 +8,9 @@ import program.model.Game;
  */
 public class PropellerHatState implements DoodleState {
 
-    private int timer;
+    private int timer; // Időzítő a hatás kezelésére
 
-    private final Doodle doodle;
+    private final Doodle doodle; // Doodle, akihez kapcsolódik ez az osztály
 
     public PropellerHatState(Doodle doodle) {
         this.doodle = doodle;

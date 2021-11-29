@@ -9,7 +9,7 @@ import program.model.states.TrampolineState;
  */
 public class TrampolinePowerUp implements PowerUp {
     /**
-     * Ütközéskor beállítja a doodler állapotát trambulin állapotra
+     * Ütközéskor beállítja a doodle állapotát trambulin állapotra
      * @param platform Platform, ami tartalmazza ezt
      * @param doodle Doodle, akivel ütközik
      */

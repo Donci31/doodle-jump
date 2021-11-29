@@ -8,7 +8,7 @@ import program.model.Game;
  */
 public class DefaultState implements DoodleState {
 
-    private final Doodle doodle;
+    private final Doodle doodle; // Doodle, akihez kapcsolódik ez az osztály
 
     public DefaultState(Doodle doodle) {
         this.doodle = doodle;

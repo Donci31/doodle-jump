@@ -8,5 +8,10 @@ import program.model.platforms.Platform;
  * strategy minta segítségével
  */
 public interface PowerUp {
+    /**
+     * Lekezeli az ütközést a doodle-el
+     * @param platform Ütköző platform
+     * @param doodle Ütköző doodle
+     */
     void hitBy(Platform platform, Doodle doodle);
 }

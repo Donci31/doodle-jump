@@ -13,13 +13,13 @@ import java.awt.event.KeyEvent;
  * Doodle logikáját kezelő osztály
  */
 public class Doodle implements Fps {
-    private int x;
-    private int y;
+    private int x; // doodle x koordinátája
+    private int y; // doodle y koordinátája
 
     private double angle;
 
-    private int vx;
-    private int vy;
+    private int vx; // doodle x komponensű sebessége
+    private int vy; // doodle y komponensű sebessége
 
     private final int width = 125;
     private final int height = 150;
@@ -30,9 +30,9 @@ public class Doodle implements Fps {
 
     private BulletHandler bulletHandler;
 
-    boolean haveShot;
+    boolean haveShot; // lőtt-e a doodle
 
-    boolean isAlive;
+    boolean isAlive; // életben van-e a doodle
 
     public Doodle(int x, int y) {
         this.x = x;
@@ -107,18 +107,33 @@ public class Doodle implements Fps {
         this.bulletHandler = bulletHandler;
     }
 
+    /**
+     * Visszaadja a doodle lábának a hitboxát
+     * @return láb hitbox
+     */
     public Rectangle getBounds() {
         return new Rectangle(x, y + 100, width, height - 100);
     }
 
+    /**
+     * Visszaadja a doodle hitboxát
+     * @return hitbox
+     */
     public Rectangle getHitbox() {
         return new Rectangle(x, y, width, height);
     }
 
+    /**
+     * Visszaadja hogy él-e a doodle
+     * @return életben levés
+     */
     public boolean isAlive() {
         return isAlive;
     }
 
+    /**
+     * Megöli a doodlet
+     */
     public void die() {
         isAlive = false;
     }

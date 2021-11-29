@@ -157,7 +157,7 @@ public class PlatformHandler {
         String content = null;
 
         try {
-            content = Files.readString(Path.of("./platforms/platforms.json"), StandardCharsets.US_ASCII);
+            content = Files.readString(Path.of("./resources/platforms.json"), StandardCharsets.US_ASCII);
         } catch (IOException e) {
             e.printStackTrace();
         }
