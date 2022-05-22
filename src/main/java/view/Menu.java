@@ -46,7 +46,7 @@ public class Menu extends JFrame {
         l1 = new JLabel();
 
         try {
-            Image img = ImageIO.read(this.getClass().getClassLoader().getResource("logo.jpg"));
+            Image img = ImageIO.read(this.getClass().getClassLoader().getResource("Logo.jpg"));
             img = img.getScaledInstance(485, 200, 0);
             l1.setIcon(new ImageIcon(img));
         } catch (IOException e) {

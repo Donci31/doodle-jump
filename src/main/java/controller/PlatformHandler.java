@@ -6,18 +6,16 @@ import model.platforms.FragilePlatform;
 import model.platforms.MovingPlatform;
 import model.platforms.Platform;
 import model.powerups.*;
+import org.apache.commons.io.IOUtils;
 import view.DrawAble;
 import view.platformviews.FragilePlatformView;
 import view.platformviews.MovingPlatformView;
 import view.platformviews.PlatformView;
 import view.powerupviews.*;
 
-
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
@@ -157,12 +155,11 @@ public class PlatformHandler {
     private PlatformData[] platformLoader() {
         String content = null;
 
+        InputStream platformsFile = this.getClass().getClassLoader().getResourceAsStream("platforms.json");
         try {
-            String path = this.getClass().getClassLoader().getResource("platforms.json").getPath();
-            path = path.replaceFirst("/", "");
-            content = Files.readString(Path.of(path), StandardCharsets.US_ASCII);
+            content = IOUtils.toString(platformsFile, StandardCharsets.UTF_8);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
         Gson gson = new Gson();
