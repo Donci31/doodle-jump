@@ -1,10 +1,10 @@
+import controller.CollisionDetector;
+import model.Doodle;
+import model.Game;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import program.controller.CollisionDetector;
-import program.model.Doodle;
-import program.model.Game;
-import program.view.GameView;
+import view.GameView;
 
 public class GameTest {
     Doodle doodle;

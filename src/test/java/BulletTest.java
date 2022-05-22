@@ -1,7 +1,7 @@
+import model.Bullet;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import program.model.Bullet;
 
 import java.awt.*;
 

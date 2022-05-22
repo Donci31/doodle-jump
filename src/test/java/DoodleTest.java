@@ -1,7 +1,7 @@
+import model.Doodle;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import program.model.Doodle;
 
 import java.awt.*;
 

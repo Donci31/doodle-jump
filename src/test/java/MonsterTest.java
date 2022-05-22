@@ -1,7 +1,7 @@
+import model.Monster;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import program.model.Monster;
 
 import java.awt.*;
 
