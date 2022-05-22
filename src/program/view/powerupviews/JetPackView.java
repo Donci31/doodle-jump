@@ -1,17 +1,25 @@
 package program.view.powerupviews;
 
+import program.view.DoodleView;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Jetpack kinézete
  */
 public class JetPackView extends PowerUpView {
 
-    private Image image;
+    private static Image image;
 
-    public JetPackView() {
-        image = new ImageIcon(new ImageIcon("./resources/jetpack.png").getImage().getScaledInstance(40, 75, Image.SCALE_SMOOTH)).getImage();
+    static {
+        try {
+            image = ImageIO.read(JetPackView.class.getClassLoader().getResource("jetpack.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -22,6 +30,6 @@ public class JetPackView extends PowerUpView {
      */
     public void draw(Graphics g, int x, int y) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image, x + 30, y - 75, null);
+        g2d.drawImage(image, x + 30, y - 75, 40, 75, null);
     }
 }

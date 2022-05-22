@@ -5,10 +5,12 @@ import program.controller.GameLoop;
 import program.model.Doodle;
 import program.model.Game;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Menu extends JFrame {
 
@@ -41,7 +43,15 @@ public class Menu extends JFrame {
     public Menu() {
         setSize(500, 750);
 
-        l1 = new JLabel(new ImageIcon(new ImageIcon("./resources/Logo.jpg").getImage().getScaledInstance(500, 200, Image.SCALE_SMOOTH)));
+        l1 = new JLabel();
+
+        try {
+            Image img = ImageIO.read(this.getClass().getClassLoader().getResource("logo.jpg"));
+            img = img.getScaledInstance(485, 200, 0);
+            l1.setIcon(new ImageIcon(img));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         p1 = new JPanel();
 
@@ -74,6 +84,6 @@ public class Menu extends JFrame {
     }
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
+        new Menu();
     }
 }

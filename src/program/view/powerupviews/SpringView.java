@@ -1,18 +1,27 @@
 package program.view.powerupviews;
 
+import program.view.DoodleView;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Rugó kinézete
  */
 public class SpringView extends PowerUpView {
 
-    private Image image;
+    private static Image image;
 
-    public SpringView() {
-        image = new ImageIcon(new ImageIcon("./resources/spring.png").getImage().getScaledInstance(40, 20, Image.SCALE_SMOOTH)).getImage();
+    static {
+        try {
+            image = ImageIO.read(SpringView.class.getClassLoader().getResource("spring.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
     /**
      * Kirajzolja a rugót
      * @param g Graphics osztály
@@ -21,6 +30,6 @@ public class SpringView extends PowerUpView {
      */
     public void draw(Graphics g, int x, int y) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image, x + 30, y - 20, null);
+        g2d.drawImage(image, x + 30, y - 20, 40, 20, null);
     }
 }

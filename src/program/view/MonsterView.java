@@ -2,8 +2,10 @@ package program.view;
 
 import program.model.Monster;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Szörny kinézete
@@ -11,12 +13,20 @@ import java.awt.*;
 public class MonsterView implements DrawAble {
     private Monster source;
 
-    private Image image;
+    private static Image image;
+
+    static {
+        try {
+            image = ImageIO.read(MonsterView.class.getClassLoader().getResource("Monster.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    ;
 
     public MonsterView(Monster source) {
         this.source = source;
-
-        image = new ImageIcon(new ImageIcon("./resources/Monster.png").getImage().getScaledInstance(source.getWidth(), source.getHeight(), Image.SCALE_SMOOTH)).getImage();
     }
 
     /**
@@ -26,6 +36,6 @@ public class MonsterView implements DrawAble {
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image, source.getX(), source.getY(), null);
+        g2d.drawImage(image, source.getX(), source.getY(), source.getWidth(), source.getHeight(), null);
     }
 }

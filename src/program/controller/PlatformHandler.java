@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
@@ -157,7 +158,9 @@ public class PlatformHandler {
         String content = null;
 
         try {
-            content = Files.readString(Path.of("./resources/platforms.json"), StandardCharsets.US_ASCII);
+            String path = this.getClass().getClassLoader().getResource("platforms.json").getPath();
+            path = path.replaceFirst("/", "");
+            content = Files.readString(Path.of(path), StandardCharsets.US_ASCII);
         } catch (IOException e) {
             e.printStackTrace();
         }

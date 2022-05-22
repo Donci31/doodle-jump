@@ -1,17 +1,25 @@
 package program.view.powerupviews;
 
+import program.view.DoodleView;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Trambulin kinézete
  */
 public class TrampolineView extends PowerUpView {
 
-    private Image image;
+    private static Image image;
 
-    public TrampolineView() {
-        image = new ImageIcon(new ImageIcon("./resources/trampoline.png").getImage().getScaledInstance(100, 40, Image.SCALE_SMOOTH)).getImage();
+    static {
+        try {
+            image = ImageIO.read(TrampolineView.class.getClassLoader().getResource("trampoline.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -22,6 +30,6 @@ public class TrampolineView extends PowerUpView {
      */
     public void draw(Graphics g, int x, int y) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image, x, y - 40, null);
+        g2d.drawImage(image, x, y - 40, 100, 40, null);
     }
 }

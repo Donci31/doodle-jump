@@ -2,8 +2,9 @@ package program.view;
 
 import program.model.Doodle;
 
-import javax.swing.*;
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Doodle kinézete
@@ -14,14 +15,22 @@ public class DoodleView implements DrawAble {
 
     private Image currentImage;
 
-    private Image normalImage;
-    private Image shootImage;
+    private static Image normalImage;
+
+    static {
+        try {
+            normalImage = ImageIO.read(DoodleView.class.getClassLoader().getResource("Doodle.png"));
+            shootImage = ImageIO.read(DoodleView.class.getClassLoader().getResource("DoodleShoot.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    ;
+    private static Image shootImage;
 
     public DoodleView(Doodle source) {
         this.source = source;
-
-        normalImage = new ImageIcon(new ImageIcon("./resources/Doodle2.png").getImage().getScaledInstance(source.getWidth(), source.getHeight(), Image.SCALE_SMOOTH)).getImage();
-        shootImage = new ImageIcon(new ImageIcon("./resources/DoodleShoot.png").getImage().getScaledInstance(100, 150, Image.SCALE_SMOOTH)).getImage();
         currentImage = normalImage;
     }
 
@@ -46,6 +55,6 @@ public class DoodleView implements DrawAble {
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(currentImage, source.getX(), source.getY(), null);
+        g2d.drawImage(currentImage, source.getX(), source.getY(), source.getWidth(), source.getHeight(), null);
     }
 }

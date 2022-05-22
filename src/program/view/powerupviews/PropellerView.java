@@ -1,17 +1,25 @@
 package program.view.powerupviews;
 
+import program.view.DoodleView;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 /**
  * Propeller kinézete
  */
 public class PropellerView extends PowerUpView{
 
-    private Image image;
+    private static Image image;
 
-    public PropellerView() {
-        image = new ImageIcon(new ImageIcon("./resources/propeller.png").getImage().getScaledInstance(70, 35, Image.SCALE_SMOOTH)).getImage();
+    static {
+        try {
+            image = ImageIO.read(PropellerView.class.getClassLoader().getResource("propeller.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -22,6 +30,6 @@ public class PropellerView extends PowerUpView{
      */
     public void draw(Graphics g, int x, int y) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(image, x + 15, y - 35, null);
+        g2d.drawImage(image, x + 15, y - 35, 70, 35, null);
     }
 }
