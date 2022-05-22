@@ -1,4 +1,9 @@
-Prog3_HF.iml
+# IntelliJ Files
 .idea/
-out/
-META-INF/
+*.iml
+
+# Binary Files
+build/
+
+# Gradle Files
+.gradle/
