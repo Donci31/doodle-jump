@@ -10,4 +10,4 @@ And to run execute
 ./gradlew run
 ```
 ## Creator:
-* Szigeti Donát
+* Donát Szigeti
