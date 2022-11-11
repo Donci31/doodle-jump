@@ -5,17 +5,17 @@ import model.Monster;
 import view.DrawAble;
 import view.MonsterView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Szörnyeket kezeli
  */
 public class MonsterHandler {
     CollisionDetector detector;
-    ArrayList<DrawAble> drawAbles;
-    ArrayList<Fps> movables;
+    List<DrawAble> drawAbles;
+    List<Fps> movables;
 
-    public MonsterHandler(CollisionDetector detector, ArrayList<DrawAble> drawAbles, ArrayList<Fps> movables) {
+    public MonsterHandler(CollisionDetector detector, List<DrawAble> drawAbles, List<Fps> movables) {
         this.detector = detector;
         this.drawAbles = drawAbles;
         this.movables = movables;
@@ -43,7 +43,7 @@ public class MonsterHandler {
      * vagy ha egy lövedék eltalálja törli a játékból
      */
     public void checkMonsters() {
-        ArrayList<Monster> monsters = detector.getMonsters();
+        List<Monster> monsters = detector.getMonsters();
 
         for (int i = 0; i < monsters.size(); i++) {
             Monster m = monsters.get(i);

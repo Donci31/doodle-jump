@@ -6,6 +6,7 @@ import view.GameView;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Játék logikáját kezelő osztály
@@ -18,7 +19,7 @@ public class Game implements Fps {
 
     private final Doodle doodle; // Játékos által irányított doodle
 
-    private final ArrayList<Fps> movables; // Minden mozgó objektum
+    private final List<Fps> movables; // Minden mozgó objektum
 
     public Game(Doodle doodle, GameView view, CollisionDetector detector) {
         this.doodle = doodle;
@@ -37,7 +38,7 @@ public class Game implements Fps {
         movables.add(doodle);
     }
 
-    public ArrayList<Fps> getMovables() {
+    public List<Fps> getMovables() {
         return movables;
     }
 

@@ -5,17 +5,17 @@ import model.Fps;
 import view.BulletView;
 import view.DrawAble;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Lövedékek kezelése
  */
 public class BulletHandler {
     CollisionDetector detector;
-    ArrayList<DrawAble> drawAbles;
-    ArrayList<Fps> movables;
+    List<DrawAble> drawAbles;
+    List<Fps> movables;
 
-    public BulletHandler(CollisionDetector detector, ArrayList<DrawAble> drawAbles, ArrayList<Fps> movables) {
+    public BulletHandler(CollisionDetector detector, List<DrawAble> drawAbles, List<Fps> movables) {
         this.detector = detector;
         this.drawAbles = drawAbles;
         this.movables = movables;
@@ -45,7 +45,7 @@ public class BulletHandler {
      * kiveszi a játékból
      */
     public void checkBullets() {
-        ArrayList<Bullet> bullets = detector.getBullets();
+        List<Bullet> bullets = detector.getBullets();
 
         for (int i = 0; i < bullets.size(); i++) {
             Bullet b = bullets.get(i);

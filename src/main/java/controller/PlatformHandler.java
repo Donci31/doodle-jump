@@ -16,7 +16,7 @@ import view.powerupviews.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -25,15 +25,17 @@ import java.util.TreeMap;
  */
 public class PlatformHandler {
 
+    PlatformData[] data;
+
     private final CollisionDetector detector;
-    private final ArrayList<DrawAble> drawAbles;
-    private final ArrayList<Fps> movables;
+    private final List<DrawAble> drawAbles;
+    private final List<Fps> movables;
 
     private final Map<String, AddPlatform> platChooser;
 
     private final Map<String, AddPowerUp> chooser;
 
-    public PlatformHandler(CollisionDetector detector, ArrayList<DrawAble> drawAbles, ArrayList<Fps> movables) {
+    public PlatformHandler(CollisionDetector detector, List<DrawAble> drawAbles, List<Fps> movables) {
         this.detector = detector;
         this.drawAbles = drawAbles;
         this.movables = movables;
@@ -52,7 +54,7 @@ public class PlatformHandler {
         chooser.put("trampoline", this::addTrampoline);
         chooser.put("spring", this::Spring);
 
-        PlatformData[] data = platformLoader();
+        data = platformLoader();
 
         for(PlatformData plat : data) {
             newPlatform(plat.type, plat.powerUp, plat.x, plat.y);
@@ -153,7 +155,7 @@ public class PlatformHandler {
      * @return platform adatokat tartalmazó tömb
      */
     private PlatformData[] platformLoader() {
-        String content = null;
+        String content;
 
         InputStream platformsFile = this.getClass().getClassLoader().getResourceAsStream("platforms.json");
         try {
@@ -172,7 +174,7 @@ public class PlatformHandler {
      * Kevés platform esetén újakat olvas be fileból.
      */
     public void checkPlatforms() {
-        ArrayList<Platform> platforms = detector.getPlatforms();
+        List<Platform> platforms = detector.getPlatforms();
 
         for (int i = 0; i < platforms.size(); i++) {
             Platform plat = platforms.get(i);
@@ -184,7 +186,6 @@ public class PlatformHandler {
         }
 
         if (platforms.size() <= 20) {
-            PlatformData[] data = platformLoader();
             int relativeY = platforms.get(platforms.size() - 1).getY() - 1100;
 
             for (PlatformData plat : data) {

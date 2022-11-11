@@ -7,6 +7,7 @@ import model.platforms.Platform;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Játékban található ütközéseket kezeli
@@ -14,11 +15,11 @@ import java.util.ArrayList;
 public class CollisionDetector {
     private Doodle doodle;
 
-    private final ArrayList<Monster> monsters;
+    private final List<Monster> monsters;
 
-    private final ArrayList<Platform> platforms;
+    private final List<Platform> platforms;
 
-    private final ArrayList<Bullet> bullets;
+    private final List<Bullet> bullets;
 
     public CollisionDetector() {
         monsters = new ArrayList<>();
@@ -26,15 +27,15 @@ public class CollisionDetector {
         bullets = new ArrayList<>();
     }
 
-    public ArrayList<Platform> getPlatforms() {
+    public List<Platform> getPlatforms() {
         return platforms;
     }
 
-    public ArrayList<Bullet> getBullets() {
+    public List<Bullet> getBullets() {
         return bullets;
     }
 
-    public ArrayList<Monster> getMonsters() {
+    public List<Monster> getMonsters() {
         return monsters;
     }
 

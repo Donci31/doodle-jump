@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Pálya kinézete
@@ -14,7 +15,7 @@ public class GameView extends JPanel {
 
     private Game source;
 
-    private final ArrayList<DrawAble> drawList;
+    private final List<DrawAble> drawList;
 
     public GameView() {
 
@@ -25,7 +26,7 @@ public class GameView extends JPanel {
         setVisible(true);
     }
 
-    public ArrayList<DrawAble> getDrawList() {
+    public List<DrawAble> getDrawList() {
         return drawList;
     }
 
