@@ -9,5 +9,3 @@ And to run execute
 ```
 ./gradlew run
 ```
-## Creator:
-* Donát Szigeti
